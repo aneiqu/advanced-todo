@@ -11,6 +11,8 @@
   -moz-osx-font-smoothing: grayscale;
   -webkit-text-size-adjust: 100%;
   overflow: hidden;
+  overflow-y: auto;
+  @apply bg-gradient-to-br from-primary-800 to-primary-900 bg-fixed;
 }
 
 @tailwind base;
