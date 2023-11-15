@@ -1,8 +1,8 @@
 import MoreVertIcon from "@mui/icons-material/MoreVert";
 import { LinearProgress, Skeleton } from "@mui/material";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
-export default function Index({ category, tasks = [], color }) {
+export default function Index({ category, tasks = [], color, loaded }) {
   // eslint-disable-next-line
   const possible = [
     "text-red-500",
@@ -12,12 +12,14 @@ export default function Index({ category, tasks = [], color }) {
     "text-purple-500",
     "text-yellow-500",
   ];
+
   const [loading, setLoading] = useState(true);
-  setTimeout(() => {
+
+  useEffect(() => {
     setLoading(false);
-  }, 2000);
+  }, [loaded]);
   return (
-    <div className='mt-4 mr-2'>
+    <div className='mt-4 mr-2 pb-2'>
       {loading ? (
         <div className='bg-primary-800 w-48 h-28 rounded-2xl p-4 shadow-md flex flex-col justify-around animate-pulse'>
           <Skeleton width='30%' />
@@ -39,7 +41,11 @@ export default function Index({ category, tasks = [], color }) {
             className={`text-${color}-500`}
             variant='determinate'
             color='inherit'
-            value={20}
+            value={
+              (tasks.filter((el) => el.status === "Completed").length /
+                (tasks.length ? tasks.length : 1)) *
+              100
+            }
           />
         </div>
       )}
