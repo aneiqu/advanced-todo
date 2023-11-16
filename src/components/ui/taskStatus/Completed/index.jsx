@@ -12,7 +12,7 @@ export default function Index() {
         color={
           getCategories().filter(
             (category) => category.title === el.category
-          )[0].color
+          )[0]?.color
         }
       ></ToDo>
     ));

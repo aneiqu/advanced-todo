@@ -6,7 +6,7 @@ import { default as Welcome } from "./components/ui/welcomeBox";
 import { getCategories } from "./services/Data/Category";
 import { getTodos } from "./services/Data/Todos";
 
-const Categories = await getCategories().map((data) => {
+const Categories = getCategories().map((data) => {
   return (
     <Category
       key={data.title}
@@ -20,15 +20,15 @@ const Categories = await getCategories().map((data) => {
 
 function App() {
   return (
-    <div className='min-h-screen '>
+    <>
       <div className='flex flex-col items-center'>
         <Welcome />
         <SearchBar />
         <div className='flex w-80 lg:w-screen overflow-auto'>{Categories}</div>
         <Statuses />
+        <CreateTask />
       </div>
-      <CreateTask />
-    </div>
+    </>
   );
 }
 

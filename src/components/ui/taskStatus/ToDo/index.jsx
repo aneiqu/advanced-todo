@@ -2,8 +2,6 @@ import { getCategories } from "../../../../services/Data/Category";
 import { getTodos } from "../../../../services/Data/Todos";
 import { default as ToDo } from "../../todoItem";
 export default function Index() {
-  console.log();
-  console.log(getTodos());
   const todos = getTodos()
     .filter((el) => el.status === "To do")
     .map((el) => (
@@ -13,7 +11,7 @@ export default function Index() {
         color={
           getCategories().filter(
             (category) => category.title === el.category
-          )[0].color
+          )[0]?.color
         }
       ></ToDo>
     ));
