@@ -10,12 +10,16 @@ export default function Index() {
   return (
     <div className='flex flex-col w-screen  items-center justify-center '>
       <Input
-        className='w-80 h-10 text-1xl p-2 my-2 text-white bg-primary-900 border-[1px] border-primary-700 rounded-md'
+        className=' p-2 bg-gradient-to-tr from-primary-800 to-primary-900 w-80 h-10 text-xl text-white shadow-lg border-primary-900 rounded-lg my-2'
         placeholder='Task'
-      />
+        disableUnderline
+      ></Input>
       <Select
-        className='w-80 h-10 text-1xl p-2 pl-0 my-2 text-white bg-primary-900 border-[1px] border-primary-700 rounded-md'
+        defaultValue='1'
         value={taskCategory}
+        variant='standard'
+        className=' p-2 bg-gradient-to-tr from-primary-800 to-primary-900 w-80 h-10 text-xl text-white shadow-lg  border-primary-900 rounded-lg my-2 '
+        disableUnderline
         onChange={hanldeCategoryChange}
       >
         <MenuItem value={1}>Cat1</MenuItem>
@@ -25,9 +29,10 @@ export default function Index() {
       </Select>
       <Input
         type='date'
-        className='w-80 h-10 text-1xl p-2 my-2 text-white bg-primary-900 border-[1px] border-primary-700 rounded-md  '
-        sx={{ svg: "red" }}
-      />
+        className=' p-2 bg-gradient-to-tr from-primary-800 to-primary-900 w-80 h-10 text-xl text-white shadow-lg border-primary-900 rounded-lg my-2'
+        placeholder='Task'
+        disableUnderline
+      ></Input>
     </div>
   );
 }
