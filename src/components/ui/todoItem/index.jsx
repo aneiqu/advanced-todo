@@ -8,7 +8,7 @@ export default function index({ content, color }) {
     "text-blue-500",
     "text-orange-500",
     "text-purple-500",
-    "text-yellow-500",
+    "text-gray-500",
   ];
 
   return (

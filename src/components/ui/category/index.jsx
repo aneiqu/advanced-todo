@@ -13,6 +13,8 @@ export default function Index({ category, tasks = [], color, loaded }) {
     "text-yellow-500",
   ];
 
+  console.log(tasks);
+
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {

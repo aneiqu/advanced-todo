@@ -2,7 +2,7 @@ import { Tab } from "@mui/base/Tab";
 import { TabPanel } from "@mui/base/TabPanel";
 import { Tabs } from "@mui/base/Tabs";
 import { TabsList } from "@mui/base/TabsList";
-import { Button, Fab } from "@mui/material";
+import { Button } from "@mui/material";
 import { useState } from "react";
 
 import AddIcon from "@mui/icons-material/Add";
@@ -84,13 +84,9 @@ export default function Index() {
         className='transparent fixed bottom-3 right-3 text-black'
         onClick={() => setEnabled(true)}
       >
-        <Fab
-          style={{ backgroundColor: "white" }}
-          color='inherit'
-          aria-label='add'
-        >
+        <div className='bg-white w-14 h-14 justify-center items-center flex rounded-full'>
           <AddIcon />
-        </Fab>
+        </div>
       </div>
     </>
   );

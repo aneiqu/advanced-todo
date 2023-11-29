@@ -1,22 +1,7 @@
-import { getCategories } from "../../../../services/Data/Category";
 import { getTodos } from "../../../../services/Data/Todos";
-import { default as ToDo } from "../../todoItem";
 
 export default function Index() {
-  const todos = getTodos()
-    .filter((el) => el.status === "Pending")
-    .map((el) => (
-      <ToDo
-        key={el.task}
-        content={el.task}
-        color={
-          getCategories().filter(
-            (category) => category.title === el.category
-          )[0]?.color
-        }
-      ></ToDo>
-    ));
-
+  const todos = getTodos("Pending");
   return (
     <div>
       <span>Pending</span>
