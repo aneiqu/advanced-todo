@@ -1,22 +1,12 @@
 import MoreVertIcon from "@mui/icons-material/MoreVert";
 import { LinearProgress, Skeleton } from "@mui/material";
 import { useEffect, useState } from "react";
-
+// eslint-disable-next-line
+import possibleColors from "../../../data/colors";
 export default function Index({ category, tasks = [], color, loaded }) {
-  // eslint-disable-next-line
-  const possible = [
-    "text-red-500",
-    "text-green-500",
-    "text-blue-500",
-    "text-orange-500",
-    "text-purple-500",
-    "text-yellow-500",
-  ];
-
-  console.log(tasks);
-
   const [loading, setLoading] = useState(true);
 
+  console.log(color);
   useEffect(() => {
     setLoading(false);
   }, [loaded]);

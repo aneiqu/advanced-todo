@@ -7,7 +7,7 @@ export default function Index() {
   const options =
     getCategories("data").length > 0
       ? getCategories("data").map((category, i) => (
-          <option key={i} value={i}>
+          <option key={i} value={i} className='bg-white text-black'>
             {category.title}
           </option>
         ))
@@ -20,14 +20,14 @@ export default function Index() {
     <div className='flex flex-col w-screen  items-center justify-center '>
       <input
         type='text'
-        className='pl-1 bg-gradient-to-tr from-primary-800 to-primary-900 w-80 h-10 text-xl text-white shadow-lg border-primary-900 rounded-lg my-2'
+        className='my-4 w-80 h-10 focus:outline-none focus:scale-y-110 focus:scale-x-110 transition-all pl-1 focus:my-2 text-lg rounded-lg bg-transparent border-dashed border-primary-500 border-[1px]'
         placeholder='Task'
       ></input>
       <div className='flex flex-col'>
         <span className='-mb-2'>Category:</span>
         <select
           disabled={options ? "" : "disabled"}
-          className='bg-gradient-to-tr from-primary-800  to-primary-900 w-80 h-10 text-xl text-white shadow-lg  border-primary-900 rounded-lg my-2'
+          className='my-4 w-80 h-10 focus:outline-none focus:scale-y-110 focus:scale-x-110 transition-all pl-1 focus:my-2 text-lg rounded-lg bg-transparent border-dashed border-primary-500 border-[1px]'
           name='colors'
           onChange={hanldeCategoryChange}
           value={taskCategory}
@@ -37,14 +37,14 @@ export default function Index() {
       </div>
       <input
         type='date'
-        className=' p-2 bg-gradient-to-tr from-primary-800 to-primary-900 w-80 h-10 text-xl text-white shadow-lg border-primary-900 rounded-lg my-2'
+        className='my-4 w-80 h-10 focus:outline-none focus:scale-y-110 focus:scale-x-110 transition-all pl-1 focus:my-2 text-lg rounded-lg bg-transparent border-dashed border-primary-500 border-[1px]'
         placeholder='Task'
       ></input>
       <div className='flex flex-col'>
         <span className='-mb-2'>Color:</span>
         <select
           disabled={options ? "" : "disabled"}
-          className='bg-gradient-to-tr from-primary-800  to-primary-900 w-80 h-10 text-xl text-white shadow-lg  border-primary-900 rounded-lg my-2'
+          className='my-4 w-80 h-10 focus:outline-none focus:scale-y-110 focus:scale-x-110 transition-all pl-1 focus:my-2 text-lg rounded-lg bg-transparent border-dashed border-primary-500 border-[1px]'
           name='colors'
           onChange={hanldeCategoryChange}
           value={taskCategory}

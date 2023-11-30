@@ -22,7 +22,7 @@ export default function Index() {
       >
         <div className='bg-gradient-to-br from-primary-800 to-primary-900 w-screen h-screen fixed overflow-hidden flex flex-col justify-between'>
           <Tabs defaultValue={1} className='flex flex-col items-center'>
-            <TabsList className='mb-4 rounded-xl bg-gradient-to-tl shadow-md from-primary-800 to-primary-950  flex w-96  items-center justify-center content-between mt-2'>
+            <TabsList className='mb-4 rounded-xl bg-gradient-to-lt shadow-md shadow-primary-900 from-primary-800 to-primary-900  flex w-96  items-center justify-center content-between mt-2'>
               <Tab
                 slotProps={{
                   root: ({ selected }) => ({
@@ -62,7 +62,7 @@ export default function Index() {
           <div className='flex w-full items-end justify-end p-1'>
             <Button
               variant='outlined'
-              className='bg-primary-800 text-white border-primary-700'
+              className='bg-transparent text-white border-primary-500 border-dashed'
               size='medium'
               sx={{ margin: "2px" }}
               onClick={() => setEnabled(false)}
@@ -71,7 +71,7 @@ export default function Index() {
             </Button>
             <Button
               variant='outlined'
-              className='bg-primary-800 text-white border-primary-700'
+              className='bg-transparent text-white border-primary-500 border-dashed'
               size='medium'
               sx={{ margin: "2px" }}
             >

@@ -9,13 +9,13 @@ export default function Index() {
   return (
     <div className='flex flex-col w-screen  items-center justify-center '>
       <input
-        className='pl-1 bg-gradient-to-tr from-primary-800 to-primary-900 w-80 h-10 text-xl text-white shadow-lg border-primary-900 rounded-lg my-2'
+        className='my-4 w-80 h-10 focus:outline-none focus:scale-y-110 focus:scale-x-110 transition-all pl-1 focus:my-2 text-lg rounded-lg bg-transparent border-dashed border-primary-500 border-[1px]'
         placeholder='Category'
       ></input>
       <div className='flex flex-col'>
         <span className='-mb-2'>Category color:</span>
         <select
-          className='bg-gradient-to-tr from-primary-800  to-primary-900 w-80 h-10 text-xl text-white shadow-lg  border-primary-900 rounded-lg my-2'
+          className='my-4 w-80 h-10 focus:outline-none focus:scale-y-110 focus:scale-x-110 transition-all pl-1 focus:my-2 text-lg rounded-lg bg-transparent border-dashed border-primary-500 border-[1px]'
           name='colors'
           onChange={handleColorChange}
           value={color}
