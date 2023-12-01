@@ -6,7 +6,6 @@ import possibleColors from "../../../data/colors";
 export default function Index({ category, tasks = [], color, loaded }) {
   const [loading, setLoading] = useState(true);
 
-  console.log(color);
   useEffect(() => {
     setLoading(false);
   }, [loaded]);

@@ -2,6 +2,7 @@ import { default as ToDo } from "../../../components/ui/todoItem";
 import { getCategories } from "../Category";
 export function getTodos(status, type) {
   const data = localStorage.getItem("Todos");
+  if (data == null) return [];
   const parsedData = status
     ? JSON.parse(data).filter((el) => el.status === status)
     : JSON.parse(data);

@@ -9,9 +9,9 @@ import AddIcon from "@mui/icons-material/Add";
 
 import { default as CategoryForm } from "./CategoryCreator";
 import { default as TodoForm } from "./todosCreator";
-
 export default function Index() {
   const [enabled, setEnabled] = useState(false);
+  const [currentlyCreating, setCurrentlyCreating] = useState("todo");
 
   return (
     <>
@@ -20,45 +20,33 @@ export default function Index() {
           enabled ? "" : "hidden"
         }  absolute flex w-screen h-screen z-20`}
       >
-        <div className='bg-gradient-to-br from-primary-800 to-primary-900 w-screen h-screen fixed overflow-hidden flex flex-col justify-between'>
-          <Tabs defaultValue={1} className='flex flex-col items-center'>
-            <TabsList className='mb-4 rounded-xl bg-gradient-to-lt shadow-md shadow-primary-900 from-primary-800 to-primary-900  flex w-96  items-center justify-center content-between mt-2'>
-              <Tab
-                slotProps={{
-                  root: ({ selected }) => ({
-                    className: `${
-                      selected
-                        ? "text-primary-900 bg-white"
-                        : "text-white bg-transparent focus:text-white hover:bg-primary-700"
-                    } text-sm font-bold w-full p-2 m-1.5 border-0 rounded-lg flex justify-center focus:outline-0 `,
-                  }),
-                }}
-                value={1}
-              >
-                Todo
-              </Tab>
-              <Tab
-                slotProps={{
-                  root: ({ selected }) => ({
-                    className: `${
-                      selected
-                        ? "text-primary-900 bg-white"
-                        : "text-white bg-transparent focus:text-white hover:bg-primary-700"
-                    }  text-sm font-bold w-full p-2 m-1.5 border-0 rounded-lg flex justify-center focus:outline-0`,
-                  }),
-                }}
-                value={2}
-              >
-                Category
-              </Tab>
-            </TabsList>
-            <TabPanel value={1}>
-              <TodoForm />
-            </TabPanel>
-            <TabPanel value={2}>
-              <CategoryForm />
-            </TabPanel>
-          </Tabs>
+        <div className='bg-gradient-to-br from-primary-800 to-primary-900 w-screen h-screen fixed overflow-hidden flex flex-col justify-between items-center'>
+          <div className='mb-4 rounded-xl bg-gradient-to-lt shadow-md shadow-primary-900 from-primary-800 to-primary-900  flex w-96  items-center justify-center content-between mt-2'>
+            <div
+              className={`h-10 flex items-center justify-center text-xl font-semibold m-2 w-40 rounded-md bg-transparent ${
+                currentlyCreating === "todo"
+                  ? "bg-white text-black"
+                  : "text-white"
+              } `}
+              onClick={() => setCurrentlyCreating("todo")}
+            >
+              Todo
+            </div>
+            <div
+              className={`h-10 flex items-center justify-center text-xl font-semibold m-2  w-40 rounded-md bg-transparent ${
+                currentlyCreating === "category"
+                  ? "bg-white text-black"
+                  : "text-white"
+              }`}
+              onClick={() => setCurrentlyCreating("category")}
+            >
+              Category
+            </div>
+          </div>
+          <div className='h-full'>
+            {currentlyCreating === "todo" ? <TodoForm /> : <CategoryForm />}
+          </div>
+
           <div className='flex w-full items-end justify-end p-1'>
             <Button
               variant='outlined'
@@ -84,7 +72,7 @@ export default function Index() {
         className='transparent fixed bottom-3 right-3 text-black'
         onClick={() => setEnabled(true)}
       >
-        <div className='bg-white w-14 h-14 justify-center items-center flex rounded-full'>
+        <div className='bg-white w-14 h-14 justify-center items-center flex rounded-full '>
           <AddIcon />
         </div>
       </div>

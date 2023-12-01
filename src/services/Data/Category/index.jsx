@@ -2,6 +2,7 @@ import { default as Category } from "../../../components/ui/category";
 import { getTodos } from "../Todos";
 export function getCategories(type) {
   const data = localStorage.getItem("Categories");
+  if (data == null) return [];
   const parsedData = JSON.parse(data);
   return type === "data"
     ? parsedData
