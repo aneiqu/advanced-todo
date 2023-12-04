@@ -1,7 +1,7 @@
 import { useState } from "react";
 import possibleColors from "../../../../data/colors";
 export default function Index() {
-  const [selectedColor, setSelectedColor] = useState("0");
+  const [selectedColor, setSelectedColor] = useState("-1");
 
   function handleColorChange(e) {
     setSelectedColor(e.target.value);
@@ -32,6 +32,7 @@ export default function Index() {
           onChange={handleColorChange}
           value={selectedColor}
         >
+          <option value={-1}>None</option>
           {colorOptions}
         </select>
       </div>

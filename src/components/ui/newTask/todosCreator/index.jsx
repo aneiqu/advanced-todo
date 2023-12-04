@@ -3,7 +3,7 @@ import possibleColors from "../../../../data/colors";
 import { getCategories } from "../../../../services/Data/Category";
 export default function Index() {
   const [taskCategory, setTaskCategory] = useState("");
-  const [selectedColor, setSelectedColor] = useState("0");
+  const [selectedColor, setSelectedColor] = useState("-1");
   const [taskContent, setTaskContent] = useState("");
   const [taskDate, setTaskDate] = useState("");
 
@@ -70,6 +70,7 @@ export default function Index() {
           onChange={handleColorChange}
           value={selectedColor}
         >
+          <option value={-1}>None</option>
           {colorOptions}
         </select>
         <span className='-mt-2'>This color will override group color!</span>

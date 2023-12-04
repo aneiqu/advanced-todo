@@ -13,6 +13,7 @@ export function getTodos(status, type) {
         <ToDo
           key={el.task}
           content={el.task}
+          date={el.date}
           color={
             el.color
               ? el.color
