@@ -6,7 +6,7 @@ import { default as Todays } from "./Today";
 
 export default function Index() {
   return (
-    <div className='flex flex-col lg:flex-row lg:w-screen justify-around text-lg font-light'>
+    <div className='flex flex-col items-center lg:flex-row w-screen lg:w-screen justify-around text-lg font-light'>
       <Todays />
       <ToDo />
       <InProgress />

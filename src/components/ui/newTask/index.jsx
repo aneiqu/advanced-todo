@@ -1,26 +1,61 @@
-import { Tab } from "@mui/base/Tab";
-import { TabPanel } from "@mui/base/TabPanel";
-import { Tabs } from "@mui/base/Tabs";
-import { TabsList } from "@mui/base/TabsList";
-import { Button } from "@mui/material";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 import AddIcon from "@mui/icons-material/Add";
 
+import { getCategories } from "../../../services/Data/Category";
 import { default as CategoryForm } from "./CategoryCreator";
 import { default as TodoForm } from "./todosCreator";
 export default function Index() {
+  const defaultCategory = getCategories("data")[0]?.title;
   const [enabled, setEnabled] = useState(false);
   const [currentlyCreating, setCurrentlyCreating] = useState("todo");
+
+  const [newTodoData, setNewTodoData] = useState({
+    taskCategory: defaultCategory,
+    selectedColor: "",
+    taskContent: "",
+    taskDate: ``,
+  });
+  const [newCategoryData, setNewCategoryData] = useState({
+    categoryTitle: defaultCategory,
+    categoryColor: "",
+  });
+
+  // useEffect(() => {
+  //   console.log(newTodoData);
+  // }, [newTodoData]);
+
+  // useEffect(() => {
+  //   // console.log(newCategoryData);
+  // }, [newCategoryData]);
+
+  const addHandler = () => {
+    currentlyCreating === "todo" ? addTodo() : addCategory();
+  };
+
+  const addTodo = () => {
+    if (
+      newTodoData.taskCategory &&
+      newTodoData.taskContent &&
+      newTodoData.taskDate
+    ) {
+      console.log("Adding todo");
+      console.log(newTodoData);
+    }
+  };
+
+  const addCategory = () => {
+    console.log("Adding category");
+  };
 
   return (
     <>
       <div
         className={`${
-          enabled ? "" : "hidden"
-        }  absolute flex w-screen h-screen z-20`}
+          enabled ? "" : "hidden "
+        }absolute flex w-screen h-screen z-20`}
       >
-        <div className='bg-gradient-to-br from-primary-800 to-primary-900 w-screen h-screen fixed overflow-hidden flex flex-col justify-between items-center'>
+        <div className='bg-gradient-to-br from-primary-800 to-primary-900 w-screen h-screen fixed overflow-hidden flex flex-col items-center'>
           <div className='mb-4 rounded-xl bg-gradient-to-lt shadow-md shadow-primary-900 from-primary-800 to-primary-900  flex w-96  items-center justify-center content-between mt-2'>
             <div
               className={`h-10 flex items-center justify-center text-xl font-semibold m-2 w-40 rounded-md bg-transparent ${
@@ -43,28 +78,27 @@ export default function Index() {
               Category
             </div>
           </div>
-          <div className='h-full'>
-            {currentlyCreating === "todo" ? <TodoForm /> : <CategoryForm />}
+          <div>
+            {currentlyCreating === "todo" ? (
+              <TodoForm setData={setNewTodoData} />
+            ) : (
+              <CategoryForm setData={setNewCategoryData} />
+            )}
           </div>
 
-          <div className='flex w-full items-end justify-end p-1'>
-            <Button
-              variant='outlined'
-              className='bg-transparent text-white border-primary-500 border-dashed'
-              size='medium'
-              sx={{ margin: "2px" }}
+          <div className='flex w-full  justify-end p-1'>
+            <button
+              className='w-24 h-10 mx-1 bg-transparent text-white text-lg border-primary-500 border-[1px] border-dashed rounded-md'
               onClick={() => setEnabled(false)}
             >
               Cancel
-            </Button>
-            <Button
-              variant='outlined'
-              className='bg-transparent text-white border-primary-500 border-dashed'
-              size='medium'
-              sx={{ margin: "2px" }}
+            </button>
+            <button
+              onClick={addHandler}
+              className='w-14 h-10 mx-1 bg-transparent text-white text-lg border-primary-500 border-[1px] border-dashed rounded-md'
             >
               Add
-            </Button>
+            </button>
           </div>
         </div>
       </div>

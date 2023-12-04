@@ -9,10 +9,12 @@ const Categories = getCategories();
 function App() {
   return (
     <>
-      <div className='flex flex-col items-center'>
+      <div className='flex flex-col w-screen items-center'>
         <Welcome />
         <SearchBar />
-        <div className='flex w-80 lg:w-screen overflow-auto'>{Categories}</div>
+        <div className='flex w-11/12 lg:w-screen overflow-auto'>
+          {Categories}
+        </div>
         <Statuses />
         <CreateTask />
       </div>

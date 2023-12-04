@@ -7,15 +7,15 @@ export default function Index() {
       new Date().getDate(),
       new Date().getMonth() + 1,
       new Date().getFullYear(),
-    ].join(".");
+    ].join("-");
 
     return el.date === todaysDate;
   });
 
   return (
     <div className='flex flex-col w-80 py-2'>
-      <h1 className='text-lg font-ligh'>Welcome User</h1>
-      <h1 className='text-2xl font-medium'>
+      <h1 className='text-2xl font-ligh'>Welcome User</h1>
+      <h1 className='text-3xl font-medium'>
         You&apos;ve got
         {todayTodos.length === 1
           ? ` ${todayTodos.length} task `

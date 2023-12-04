@@ -8,6 +8,7 @@ const possibleColors = [
   "bg-orange-500",
   "bg-cyan-500",
   "bg-gray-500",
+  "bg-white-500",
   "text-red-500",
   "text-green-500",
   "text-blue-500",
