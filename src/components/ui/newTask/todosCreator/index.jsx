@@ -48,9 +48,11 @@ export default function Index({ setData }) {
     }));
   };
   const handleDateChange = (e) => {
+    console.log(e);
+
     setData((prev) => ({
       ...prev,
-      taskDate: e,
+      taskDate: `${e} ${new Date().toISOString().split("T")[1]}`,
     }));
   };
 
@@ -79,6 +81,7 @@ export default function Index({ setData }) {
       </div>
       <input
         type='date'
+        min={`${new Date().toISOString().split("T")[0]}`}
         className='my-4 w-80 h-10 focus:outline-none focus:scale-y-110 focus:scale-x-110 transition-all pl-1 focus:my-2 text-lg rounded-lg bg-transparent border-dashed border-primary-500 border-[1px]'
         placeholder='Task'
         onChange={(e) => handleDateChange(e.target.value)}

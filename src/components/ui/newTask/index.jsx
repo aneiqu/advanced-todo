@@ -3,9 +3,10 @@ import { useEffect, useState } from "react";
 import AddIcon from "@mui/icons-material/Add";
 
 import { getCategories } from "../../../services/Data/Category";
+import { setTodos } from "../../../services/Data/Todos";
 import { default as CategoryForm } from "./CategoryCreator";
 import { default as TodoForm } from "./todosCreator";
-export default function Index() {
+export default function Index({ returnTodos }) {
   const defaultCategory = getCategories("data")[0]?.title;
   const [enabled, setEnabled] = useState(false);
   const [currentlyCreating, setCurrentlyCreating] = useState("todo");
@@ -39,8 +40,7 @@ export default function Index() {
       newTodoData.taskContent &&
       newTodoData.taskDate
     ) {
-      console.log("Adding todo");
-      console.log(newTodoData);
+      returnTodos(setTodos(newTodoData));
     }
   };
 

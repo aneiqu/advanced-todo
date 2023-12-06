@@ -1,16 +1,16 @@
 import { getTodos } from "../../../../services/Data/Todos";
 
-export default function Index() {
-  const todos = getTodos("");
+export default function Index({ todos }) {
+  const todoList = getTodos(todos, "all") || [];
 
-  const todayTodos = todos.filter((el) => {
+  const todayTodos = todoList.filter((el) => {
     const todaysDate = [
-      new Date().getDate(),
-      new Date().getMonth() + 1,
       new Date().getFullYear(),
+      new Date().getMonth() + 1,
+      new Date().getDate().toString().padStart(2, "0"),
     ].join("-");
 
-    return el.props.date === todaysDate;
+    return el.props.date.split(" ")[0] === todaysDate;
   });
 
   return (

@@ -1,5 +1,4 @@
 import { default as Category } from "../../../components/ui/category";
-import { getTodos } from "../Todos";
 export function getCategories(type) {
   const data = localStorage.getItem("Categories");
   if (data == null) return [];
@@ -13,7 +12,7 @@ export function getCategories(type) {
             category={data.title}
             color={data.color}
             loaded={true}
-            tasks={getTodos("", "data").filter(
+            tasks={JSON.parse(localStorage.getItem("Todos")).filter(
               (el) => el.category === data.title
             )}
           ></Category>

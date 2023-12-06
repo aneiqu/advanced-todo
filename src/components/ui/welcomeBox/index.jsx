@@ -1,15 +1,15 @@
 import { getTodos } from "../../../services/Data/Todos";
 
-export default function Index() {
-  const todos = getTodos("", "data");
-  const todayTodos = todos.filter((el) => {
+export default function Index({ todos }) {
+  const todoList = getTodos(todos, "all") || [];
+  const todayTodos = todoList.filter((el) => {
     const todaysDate = [
-      new Date().getDate(),
-      new Date().getMonth() + 1,
       new Date().getFullYear(),
+      new Date().getMonth() + 1,
+      new Date().getDate().toString().padStart(2, "0"),
     ].join("-");
 
-    return el.date === todaysDate;
+    return el.props.date.split(" ")[0] === todaysDate;
   });
 
   return (
