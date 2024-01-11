@@ -2,33 +2,23 @@ import { useEffect, useState } from "react";
 
 import AddIcon from "@mui/icons-material/Add";
 
-import { getCategories } from "../../../services/Data/Category";
+import { getCategories, setCategories } from "../../../services/Data/Category";
 import { setTodos } from "../../../services/Data/Todos";
 import { default as CategoryForm } from "./CategoryCreator";
 import { default as TodoForm } from "./todosCreator";
-export default function Index({ returnTodos }) {
-  const defaultCategory = getCategories("data")[0]?.title;
+export default function Index({ returnTodos, returnCategories, categories }) {
   const [enabled, setEnabled] = useState(false);
   const [currentlyCreating, setCurrentlyCreating] = useState("todo");
 
   const [newTodoData, setNewTodoData] = useState({
-    taskCategory: defaultCategory,
-    selectedColor: "",
+    taskCategory: JSON.parse(categories)[0]?.title,
     taskContent: "",
     taskDate: ``,
   });
   const [newCategoryData, setNewCategoryData] = useState({
-    categoryTitle: defaultCategory,
+    categoryTitle: "",
     categoryColor: "",
   });
-
-  // useEffect(() => {
-  //   console.log(newTodoData);
-  // }, [newTodoData]);
-
-  // useEffect(() => {
-  //   // console.log(newCategoryData);
-  // }, [newCategoryData]);
 
   const addHandler = () => {
     currentlyCreating === "todo" ? addTodo() : addCategory();
@@ -36,16 +26,24 @@ export default function Index({ returnTodos }) {
 
   const addTodo = () => {
     if (
-      newTodoData.taskCategory &&
-      newTodoData.taskContent &&
-      newTodoData.taskDate
-    ) {
-      returnTodos(setTodos(newTodoData));
-    }
+      !(
+        newTodoData.taskCategory &&
+        newTodoData.taskContent &&
+        newTodoData.taskDate
+      )
+    )
+      return;
+    console.log(newTodoData);
+    return returnTodos(setTodos(newTodoData));
   };
 
   const addCategory = () => {
-    console.log("Adding category");
+    if (!(newCategoryData.categoryTitle && newCategoryData.categoryColor))
+      return;
+    console.log(newCategoryData);
+    setCategories(newCategoryData);
+    // console.log(returnCategories(setCategories(newCategoryData)));
+    // return returnCategories(setCategories(newCategoryData));
   };
 
   return (
@@ -80,7 +78,7 @@ export default function Index({ returnTodos }) {
           </div>
           <div>
             {currentlyCreating === "todo" ? (
-              <TodoForm setData={setNewTodoData} />
+              <TodoForm setData={setNewTodoData} categories={categories} />
             ) : (
               <CategoryForm setData={setNewCategoryData} />
             )}

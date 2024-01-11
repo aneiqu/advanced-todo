@@ -3,6 +3,7 @@ import MoreVertIcon from "@mui/icons-material/MoreVert";
 // eslint-disable-next-line no-unused-vars
 import possibleColors from "../../../data/colors";
 export default function index({ content, color }) {
+  console.log(color);
   const handleMenuOpen = (e) => {
     console.log(e.target);
   };
@@ -10,7 +11,9 @@ export default function index({ content, color }) {
   return (
     <>
       <div className='w-full h-12 p-3 flex items-center justify-between'>
-        <div className={`h-6 w-7 rounded-full mr-2 bg-${color}-500`} />
+        <div
+          className={`h-6 w-7 rounded-full mr-2 bg-${color.toLowerCase()}-500`}
+        />
         <span className='w-full text-xl whitespace-nowrap text-ellipsis overflow-hidden'>
           {content}
         </span>

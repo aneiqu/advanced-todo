@@ -6,14 +6,12 @@ import { default as Welcome } from "./components/ui/welcomeBox";
 import { getCategories } from "./services/Data/Category";
 import { setTodos } from "./services/Data/Todos";
 
-// if (!localStorage.getItem("Todos")) localStorage.setItem("Todos", "[]");
-
-const Categories = getCategories();
 function App() {
   const [todoList, setTodoList] = useState(localStorage.getItem("Todos") || []);
   const [categoryList, setCategoryList] = useState(
-    localStorage.getItem("Categories") || []
+    localStorage.getItem("Categories") || "[]"
   );
+  const categoryItems = getCategories(categoryList);
 
   const returnNewTodoList = (e) => {
     setTodoList(e);
@@ -27,10 +25,14 @@ function App() {
         <Welcome todos={todoList} />
         <SearchBar />
         <div className='flex w-11/12 lg:w-screen overflow-auto'>
-          {Categories}
+          {categoryItems}
         </div>
         <Statuses todos={todoList} />
-        <CreateTask returnTodos={returnNewTodoList} />
+        <CreateTask
+          categories={categoryList}
+          returnTodos={returnNewTodoList}
+          returnCategories={returnNewCategoryList}
+        />
       </div>
     </>
   );

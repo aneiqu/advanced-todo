@@ -3,22 +3,25 @@ import { getCategories } from "../Category";
 
 export function getTodos(todoList, status) {
   if (todoList.length <= 0) return;
+
   return JSON.parse(todoList)
     .filter((el) => (status === "all" ? el : el.status === status))
-    .map((el) => (
-      <ToDo
-        key={`${el.task}-${el.date}`}
-        content={el.task}
-        date={el.date}
-        color={
-          el.color
-            ? el.color
-            : getCategories("data").filter(
-                (category) => category.title === el.category
-              )[0]?.color
-        }
-      ></ToDo>
-    ));
+    .map((el) => {
+      return (
+        <ToDo
+          key={`${el.task}-${el.date}`}
+          content={el.task}
+          date={el.date}
+          color={
+            el.color
+              ? el.color
+              : getCategories(localStorage.getItem("Categories")).filter(
+                  (category) => category.props.category === el.category
+                )[0]?.props.color
+          }
+        ></ToDo>
+      );
+    });
 }
 
 export function setTodos(data) {

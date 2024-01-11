@@ -1,15 +1,15 @@
 import { useState } from "react";
 import possibleColors from "../../../../data/colors";
 import { getCategories } from "../../../../services/Data/Category";
-export default function Index({ setData }) {
+export default function Index({ setData, categories }) {
   const [taskCategory, setTaskCategory] = useState("");
   const [selectedColor, setSelectedColor] = useState("-1");
   const [taskContent, setTaskContent] = useState("");
   const [taskDate, setTaskDate] = useState("");
 
   const groupOptions =
-    getCategories("data").length > 0
-      ? getCategories("data").map((category, i) => (
+    JSON.parse(categories).length > 0
+      ? JSON.parse(categories).map((category, i) => (
           <option key={i} value={i} className='bg-white text-black'>
             {category.title}
           </option>
@@ -48,8 +48,6 @@ export default function Index({ setData }) {
     }));
   };
   const handleDateChange = (e) => {
-    console.log(e);
-
     setData((prev) => ({
       ...prev,
       taskDate: `${e} ${new Date().toISOString().split("T")[1]}`,
