@@ -3,7 +3,6 @@ import MoreVertIcon from "@mui/icons-material/MoreVert";
 // eslint-disable-next-line no-unused-vars
 import possibleColors from "../../../data/colors";
 export default function index({ content, color }) {
-  console.log(color);
   const handleMenuOpen = (e) => {
     console.log(e.target);
   };

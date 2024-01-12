@@ -26,5 +26,5 @@ export function setCategories(data) {
   };
   const newData = [...prevData, newTodo];
   localStorage.setItem("Categories", JSON.stringify(newData));
-  // return JSON.stringify(newData);
+  return JSON.stringify(newData);
 }

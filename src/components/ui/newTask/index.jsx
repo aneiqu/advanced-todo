@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 
 import AddIcon from "@mui/icons-material/Add";
 
-import { getCategories, setCategories } from "../../../services/Data/Category";
+import { setCategories } from "../../../services/Data/Category";
 import { setTodos } from "../../../services/Data/Todos";
 import { default as CategoryForm } from "./CategoryCreator";
 import { default as TodoForm } from "./todosCreator";
@@ -14,6 +14,7 @@ export default function Index({ returnTodos, returnCategories, categories }) {
     taskCategory: JSON.parse(categories)[0]?.title,
     taskContent: "",
     taskDate: ``,
+    taskColor: "",
   });
   const [newCategoryData, setNewCategoryData] = useState({
     categoryTitle: "",
@@ -33,17 +34,15 @@ export default function Index({ returnTodos, returnCategories, categories }) {
       )
     )
       return;
-    console.log(newTodoData);
+    console.log("test");
     return returnTodos(setTodos(newTodoData));
   };
 
   const addCategory = () => {
     if (!(newCategoryData.categoryTitle && newCategoryData.categoryColor))
       return;
-    console.log(newCategoryData);
-    setCategories(newCategoryData);
-    // console.log(returnCategories(setCategories(newCategoryData)));
-    // return returnCategories(setCategories(newCategoryData));
+    returnCategories(setCategories(newCategoryData));
+    setEnabled(false);
   };
 
   return (

@@ -29,7 +29,7 @@ export default function Index({ category, tasks = [], color, loaded }) {
           </div>
           <span className='text-lg'>{category}</span>
           <LinearProgress
-            className={`text-${color}-500`}
+            className={`text-${color.toLowerCase()}-500`}
             variant='determinate'
             color='inherit'
             value={

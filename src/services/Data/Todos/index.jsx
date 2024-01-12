@@ -2,14 +2,13 @@ import { default as ToDo } from "../../../components/ui/todoItem";
 import { getCategories } from "../Category";
 
 export function getTodos(todoList, status) {
-  if (todoList.length <= 0) return;
-
   return JSON.parse(todoList)
     .filter((el) => (status === "all" ? el : el.status === status))
     .map((el) => {
       return (
         <ToDo
-          key={`${el.task}-${el.date}`}
+          key={el.iKey}
+          iKey={el.iKey}
           content={el.task}
           date={el.date}
           color={
@@ -25,13 +24,21 @@ export function getTodos(todoList, status) {
 }
 
 export function setTodos(data) {
+  const highestKey = JSON.parse(localStorage.getItem("Todos"))
+    ? JSON.parse(localStorage.getItem("Todos"))
+        .map((el) => el.iKey)
+        .reduce((a, b) => Math.max(a, b), 0)
+    : 0;
+
   const prevData = JSON.parse(localStorage.getItem("Todos")) || [];
   const newTodo = {
     category: data.taskCategory,
     task: data.taskContent,
     date: data.taskDate,
     status: "ToDo",
-    color: data.selectedColor,
+    color: data.taskColor,
+    key: highestKey + 1,
+    iKey: highestKey + 1,
   };
   const newData = [...prevData, newTodo];
   localStorage.setItem("Todos", JSON.stringify(newData));
