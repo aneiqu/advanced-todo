@@ -44,3 +44,5 @@ export function setTodos(data) {
   localStorage.setItem("Todos", JSON.stringify(newData));
   return JSON.stringify(newData);
 }
+
+// export function removeTodo(data) {}

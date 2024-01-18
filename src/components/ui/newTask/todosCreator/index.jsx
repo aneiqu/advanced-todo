@@ -1,11 +1,11 @@
 import { useState } from "react";
 import possibleColors from "../../../../data/colors";
-import { getCategories } from "../../../../services/Data/Category";
+// import { getCategories } from "../../../../services/Data/Category";
 export default function Index({ setData, categories }) {
-  const [taskCategory, setTaskCategory] = useState("");
+  // const [taskCategory, setTaskCategory] = useState("");
   const [selectedColor, setSelectedColor] = useState("-1");
-  const [taskContent, setTaskContent] = useState("");
-  const [taskDate, setTaskDate] = useState("");
+  // const [taskContent, setTaskContent] = useState("");
+  // const [taskDate, setTaskDate] = useState("");
 
   const groupOptions =
     JSON.parse(categories).length > 0

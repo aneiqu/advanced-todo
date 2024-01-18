@@ -1,10 +1,14 @@
 import EditIcon from "@mui/icons-material/Edit";
-import MoreVertIcon from "@mui/icons-material/MoreVert";
 // eslint-disable-next-line no-unused-vars
+import { useState } from "react";
 import possibleColors from "../../../data/colors";
+import { default as EditMenu } from "../todoEditMenu";
 export default function index({ content, color }) {
+  const [visible, setVisible] = useState(false);
+
   const handleMenuOpen = (e) => {
-    console.log(e.target);
+    console.log(e.target.parentNode.parentNode);
+    setVisible(true);
   };
 
   return (
@@ -16,19 +20,16 @@ export default function index({ content, color }) {
         <span className='w-full text-xl whitespace-nowrap text-ellipsis overflow-hidden'>
           {content}
         </span>
-        <div className='group w-10'>
-          <MoreVertIcon fontSize='large' className=' group-active:scale-110' />
-          <div
-            className='absolute right-12 h-10 w-24 bg-primary-700 rounded-md rounded-tr-none lg:rounded-tl-none hidden lg:right-auto lg:rounded-tr-md lg:ml-6 group-hover:block'
-            // className='absolute right-12 h-10 w-24 bg-primary-700 rounded-md rounded-tr-none hidden group-hover:block'
-            onClick={(e) => handleMenuOpen(e)}
-          >
-            <span className='h-full flex  items-center justify-around text-lg'>
-              Edit
-              <EditIcon />
-            </span>
-          </div>
+        <div className='group w-10 px-2'>
+          <EditIcon
+            fontSize='medium'
+            className=' active:scale-110 active:text-slate-400'
+            onClick={handleMenuOpen}
+          />
         </div>
+      </div>
+      <div>
+        <EditMenu visible={visible} closeMenu={setVisible}></EditMenu>
       </div>
     </>
   );
